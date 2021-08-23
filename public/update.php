@@ -1,6 +1,9 @@
 <?php
 // this code will only execute after the submit button is clicked
 // if (isset($_POST['submit'])) {
+
+require "user-check.php";
+
 // include the config file that we created before
 require "../config.php";
 

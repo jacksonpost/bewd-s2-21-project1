@@ -1,2 +1,4 @@
 config.php
 db.sql
+config-remote.php
+temp.php

@@ -1,5 +1,7 @@
 <?php 
 
+    require "user-check.php";
+
     //simple if/else statement to check if the id is available
     if (isset($_GET['id'])) {
         //yes the id exists 

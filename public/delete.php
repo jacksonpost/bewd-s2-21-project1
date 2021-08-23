@@ -73,19 +73,16 @@ if(isset($result)){
         <?php echo $row['worktitle']; ?><br> Work Date:
         <?php echo $row['workdate']; ?><br> Work type:
         <?php echo $row['worktype']; ?><br>
-            <a href='delete.php?id=<?php echo $row['id']; ?>'>Delete</a>
+            <a onClick="return confirm('Do you really want to delete this item?');" href='delete.php?id=<?php echo $row['id']; ?>'>Delete</a>
         </p>
-        <?php
-        // this willoutput all the data from the array
-        //echo '<pre>'; var_dump($row);
-        ?>
+
         <hr>
         <?php //}; //close the foreach
         //};
     };
 }
 ?>
-<form method="post" onsubmit="return confirm('Do you really want to submit the form?');">
+<form method="post">
     <input type="submit" name="submit" value="View all">
 </form>
 <?php include "templates/footer.php"; ?>

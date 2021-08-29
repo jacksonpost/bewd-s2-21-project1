@@ -10,8 +10,11 @@ if (isset($_POST['submit'])) {
     try {
     // FIRST: Connect to the database
     $connection = new PDO($dsn, $username, $password, $options);
-    // SECOND: Create the SQL
-    $sql = "SELECT * FROM works";
+
+    // make sure users only see their own collection items
+    $sql = "SELECT * FROM works WHERE userid =" . $_SESSION['id'];
+    //$sql = "SELECT * FROM works";
+
     // THIRD: Prepare the SQL
     $statement = $connection->prepare($sql);
     $statement->execute();
@@ -31,23 +34,35 @@ if (isset($_POST['submit'])) {
     <h2>Results</h2>
     <?php
     // This is a loop, which will loop through each result in the array
-    foreach($result as $row) {
-    ?>
-    <p>
-    ID:
-        <!-- <?php //echo $row["id"]; ?><br> Artist Name: -->
-        <?php echo $row['artistname']; ?><br> Work Title:
-        <?php echo $row['worktitle']; ?><br> Work Date:
-        <?php echo $row['workdate']; ?><br> Work type:
-        <?php echo $row['worktype']; ?><br>
-    </p>
-    <?php
-    // this willoutput all the data from the array
-    //echo '<pre>'; var_dump($row);
-    ?>
-    <hr>
-    <?php }; //close the foreach
-    };
+        foreach($result as $row) {
+            ?>
+            <div class="result">
+                <?php
+                if( $row["imagelocation"] !== NULL && $row["imagelocation"] !== "" ){
+                    echo "<img src='uploads/" . $row["imagelocation"] . "' alt='" . $row['worktitle'] ." by " . $row['artistname'] . "'>";
+                }
+                else
+                {
+                    echo "<p class='small'>No image available.</p>";
+                }
+                ?>
+                <p>ID:<?php echo $row["id"]; ?></p>
+                <p>Artist Name: <?php echo $row['artistname']; ?></p>
+                <p>Work Title: <?php echo $row['worktitle']; ?></p>
+                <p>Work Date: <?php echo $row['workdate']; ?></p>
+                <p>Work type: <?php echo $row['worktype']; ?></p>
+            </div>
+                <?php
+                // this willoutput all the data from the array
+                //echo '<pre>'; var_dump($row);
+                ?>
+            <?php 
+        } //close the foreach
+    }
+    else
+    {
+        echo "<p>No items in collection</p>";
+    }
 };
 ?>
 <form method="post">

@@ -46,7 +46,6 @@ if (isset($_POST['submit'])) {
                     echo "<p class='small'>No image available.</p>";
                 }
                 ?>
-                <p>ID:<?php echo $row["id"]; ?></p>
                 <p>Artist Name: <?php echo $row['artistname']; ?></p>
                 <p>Work Title: <?php echo $row['worktitle']; ?></p>
                 <p>Work Date: <?php echo $row['workdate']; ?></p>

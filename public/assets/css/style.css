@@ -28,7 +28,7 @@ header nav ul li{
 }
 
 main{
-    /* use a CSS preprocessor to subtract height of header and footer */
+    /* use a CSS preprocessor/js to subtract height of header and footer */
     min-height: 60vh;
     background: #fff;
 }
@@ -41,6 +41,10 @@ form.add{
     max-width: 50ch;
 }
 
+form.add img{
+    max-width: 100%;
+}
+
 .container{
     max-width: 960px;
 }
@@ -49,6 +53,9 @@ form.add{
     display: flex;
     justify-content: space-between;
 }
+    .results img{
+        max-width: 400px;
+    }
     .results .item{
         background: var(--grey-light-warm);
         padding: 1rem;

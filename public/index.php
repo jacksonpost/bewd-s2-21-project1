@@ -1,13 +1,8 @@
 <?php 
 require "user-check.php";
-
-include "templates/header.php";
-
-// show some collection...
-
-// include the config file that we created before
 require "../config.php";
 
+include "templates/header.php";
 ?>
 
 <?php
@@ -30,6 +25,15 @@ if ($result && $statement->rowCount() > 0) { ?>
     foreach($result as $row) {
     ?>
         <div class="item">
+            <?php
+            if( $row["imagelocation"] !== NULL && $row["imagelocation"] !== "" ){
+                echo "<img src='uploads/" . $row["imagelocation"] . "' alt='" . $row['worktitle'] ." by " . $row['artistname'] . "'>";
+            }
+            else
+            {
+                echo "<p class='small'>No image available.</p>";
+            }
+            ?>
             <p>Artist:<?php echo $row['artistname']; ?></p>
             <p>Work Title:<?php echo $row['worktitle']; ?></p>
             <p>Work Date:<?php echo $row['workdate']; ?></p>

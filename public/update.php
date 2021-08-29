@@ -3,8 +3,6 @@
 // if (isset($_POST['submit'])) {
 
 require "user-check.php";
-
-// include the config file that we created before
 require "../config.php";
 
 // this is called a try/catch statement

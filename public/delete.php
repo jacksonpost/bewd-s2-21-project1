@@ -1,5 +1,5 @@
 <?php
-// include the config file 
+require "user-check.php";
 require "../config.php";
 require "common.php";
 
@@ -61,28 +61,39 @@ else
 //if there are some results
 // if ($result && $statement->rowCount() > 0) { ?>
 <!-- <h2>Results</h2> -->
+
+<div class="results">
 <?php
 if(isset($result)){
-    // This is a loop, which will loop through each result in the array
     foreach($result as $row) {
     ?>
-        <p>
-        ID:
-        <!-- <?php //echo $row["id"]; ?><br> Artist Name: -->
-        <?php echo $row['artistname']; ?><br> Work Title:
-        <?php echo $row['worktitle']; ?><br> Work Date:
-        <?php echo $row['workdate']; ?><br> Work type:
-        <?php echo $row['worktype']; ?><br>
-            <a onClick="return confirm('Do you really want to delete this item?');" href='delete.php?id=<?php echo $row['id']; ?>'>Delete</a>
-        </p>
-
-        <hr>
+        <div class="item">
+            <?php
+            if( $row["imagelocation"] !== NULL && $row["imagelocation"] !== "" ){
+                echo "<img src='uploads/" . $row["imagelocation"] . "' alt='" . $row['worktitle'] ." by " . $row['artistname'] . "'>";
+            }
+            else
+            {
+                echo "<p class='small'>No image available.</p>";
+            }
+            ?>
+            <p>Artist:<?php echo $row['artistname']; ?></p>
+            <p>Work Title:<?php echo $row['worktitle']; ?></p>
+            <p>Work Date:<?php echo $row['workdate']; ?></p>
+            <p>Work type:<?php echo $row['worktype']; ?></p>
+        
+            <p>
+                <a onClick="return confirm('Do you really want to delete this item?');" href='delete.php?id=<?php echo $row['id']; ?>'>Delete</a>
+            </p>
+        </div>
+        
         <?php //}; //close the foreach
         //};
     };
 }
 ?>
-<form method="post">
+</div>
+<!-- <form method="post">
     <input type="submit" name="submit" value="View all">
-</form>
+</form> -->
 <?php include "templates/footer.php"; ?>

@@ -1,8 +1,7 @@
 <?php
 // check whether user is logged in, redirect to login if not.
 require "user-check.php";
-?>
-<?php
+
 // this code will only execute after the submit button is clicked
 if (isset($_POST['submit'])) {
 	
@@ -105,7 +104,7 @@ if (isset($_POST['submit'])) {
 	</div> -->
 	<div class="form-group">
 		<label for="worktype">Work Image</label>
-		<input type="file" name="imagelocation" id="imagelocation">
+		<input type="file" class="form-input" name="imagelocation" id="imagelocation">
 	</div>
 	<input type="submit" class="btn" name="submit" value="Add to collection">
 </form>

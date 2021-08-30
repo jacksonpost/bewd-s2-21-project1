@@ -25,7 +25,7 @@ try {
 ?>
 <?php include "templates/header.php"; ?>
 
-<h2>Update</h2>
+<h2>Edit Works</h2>
 
 <?php
 // if (isset($_POST['submit'])) {

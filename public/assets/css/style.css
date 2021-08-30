@@ -14,6 +14,7 @@ body{
 
 header{
     margin-bottom: 2rem;
+    padding: 1rem;
     /* background: var(--grey-light-warm); */
 }
 header nav *{
@@ -31,10 +32,12 @@ main{
     /* use a CSS preprocessor/js to subtract height of header and footer */
     min-height: 60vh;
     background: #fff;
+    padding: 4rem 0;
+    width: 100%;
 }
 
 footer{
-    /* background: var(--grey-light-warm); */
+    padding: 1rem;
 }
 
 form.add{
@@ -51,6 +54,7 @@ form.add img{
 
 .results{
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
 }
     .results img{
@@ -59,6 +63,7 @@ form.add img{
     .results .item{
         background: var(--grey-light-warm);
         padding: 1rem;
+        margin: 1rem;
     }
     .results .item p{
         margin: 0;

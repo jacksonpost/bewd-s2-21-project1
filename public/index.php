@@ -9,10 +9,15 @@ include "templates/header.php";
 
 try {
     $connection = new PDO($dsn, $username, $password, $options);
-    $sql = "SELECT * FROM works";
+
+    $uid = $_SESSION['id'];
+    $sql = "SELECT * FROM works WHERE userid = :uid";
+
     $statement = $connection->prepare($sql);
+    $statement->bindValue(':uid', $uid);
     $statement->execute();
     $result = $statement->fetchAll();
+
 } catch(PDOException $error) {
     echo $sql . "<br>" . $error->getMessage();
 }
@@ -38,6 +43,7 @@ if ($result && $statement->rowCount() > 0) { ?>
             <p>Work Title:<?php echo $row['worktitle']; ?></p>
             <p>Work Date:<?php echo $row['workdate']; ?></p>
             <p>Work type:<?php echo $row['worktype']; ?></p>
+            <p><a href='update-work.php?id=<?php echo $row['id']; ?>'>Edit</a></p>
         </div>
     
     <?php }; //close the foreach

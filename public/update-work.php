@@ -103,8 +103,8 @@
             <p>Work successfully updated.</p>
         <?php endif; ?>
 
-        <h2>Edit a work</h2>
-        <h3>ID: <?php echo escape($work['id']); ?></h3>
+        <h2>Edit: <?php echo escape($work['worktitle']); ?></h2>
+        <h3>Work ID: <?php echo escape($work['id']); ?></h3>
 
         <form class="add" method="post" enctype="multipart/form-data">
             <input readonly type="hidden" name="imagelocation" id="imagelocation" value="<?php echo escape($work['imagelocation']); ?>" >

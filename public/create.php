@@ -2,20 +2,20 @@
 // check whether user is logged in, redirect to login if not.
 require "user-check.php";
 
+echo "<h1>Session ID:" . $_SESSION['id'] . "</h1>";
+
 // this code will only execute after the submit button is clicked
 if (isset($_POST['submit'])) {
 	
-	// include the config file that we created before
 	require "../config.php";
 	
 	if( empty(trim($_POST['artistname'])) or empty(trim($_POST['worktitle'])) ){
         $input_err = "Please enter artist's name and work title.";
     }
 	
+	//// if a file has been uploaded
 	if( !empty($_FILES["imagelocation"]["name"]) ){
-		
 		include "img-upload.php";
-
 	}
 	////
 	
@@ -65,7 +65,7 @@ if (isset($_POST['submit'])) {
 <h2>Add a work</h2>
 
 <?php if (isset($_POST['submit']) && $statement) {
-    echo "<p class='text-success'>Work successfully added.</p>"; 
+    echo "<p class='text-success'>'" . $worktitle . "' is now in your collection!</p>"; 
 } ?>
 
 <!--form to collect data for each artwork
